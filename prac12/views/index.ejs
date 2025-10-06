@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <title>Kids Calculator</title>
+  <link rel="stylesheet" href="/style.css" />
+</head>
+<body>
+  <div class="card">
+    <h1>🧮 Kid's Calculator</h1>
+
+    <% if (error) { %>
+      <div class="error"><%= error %></div>
+    <% } %>
+
+    <form action="/calculate" method="POST" autocomplete="off">
+      <label>Number 1
+        <input type="text" name="num1" value="<%= values.num1 %>" inputmode="decimal" />
+      </label>
+
+      <label>Number 2
+        <input type="text" name="num2" value="<%= values.num2 %>" inputmode="decimal" />
+      </label>
+
+      <label>Operation
+        <select name="op">
+          <option value="add" <%= values.op === 'add' ? 'selected' : '' %>>Add (+)</option>
+          <option value="subtract" <%= values.op === 'subtract' ? 'selected' : '' %>>Subtract (−)</option>
+          <option value="multiply" <%= values.op === 'multiply' ? 'selected' : '' %>>Multiply (×)</option>
+          <option value="divide" <%= values.op === 'divide' ? 'selected' : '' %>>Divide (÷)</option>
+        </select>
+      </label>
+
+      <button type="submit" class="big">Calculate</button>
+    </form>
+
+    <p class="hint">Tip: enter numbers like 3 or 2.5</p>
+  </div>
+</body>
+</html>
